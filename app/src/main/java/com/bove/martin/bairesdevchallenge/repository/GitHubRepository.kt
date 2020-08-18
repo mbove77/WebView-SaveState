@@ -1,7 +1,6 @@
-package com.bove.martin.bairesdevchallenge.Repository
+package com.bove.martin.bairesdevchallenge.repository
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.bove.martin.bairesdevchallenge.model.SearchResult
 import com.bove.martin.bairesdevchallenge.retrofit.GitHubClient

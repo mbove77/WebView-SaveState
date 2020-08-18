@@ -2,7 +2,7 @@ package com.bove.martin.bairesdevchallenge.fragments
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.bove.martin.bairesdevchallenge.Repository.GitHubRepository
+import com.bove.martin.bairesdevchallenge.repository.GitHubRepository
 import com.bove.martin.bairesdevchallenge.model.SearchResult
 
 /**
