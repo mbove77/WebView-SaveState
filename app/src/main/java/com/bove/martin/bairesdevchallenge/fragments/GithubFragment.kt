@@ -22,6 +22,9 @@ import kotlinx.android.synthetic.main.fragment_github.*
 class GithubFragment : Fragment(), ProjectsAdapter.OnItemClickListener {
     private lateinit var gitHubViewModel: GitHubFragmentViewModel
     private lateinit var projectsAdapter: ProjectsAdapter
+    private var index = -1
+    private var top = -1
+    private var mLayoutManager: LinearLayoutManager? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         gitHubViewModel = ViewModelProviders.of(activity!!).get(GitHubFragmentViewModel::class.java)
@@ -38,11 +41,12 @@ class GithubFragment : Fragment(), ProjectsAdapter.OnItemClickListener {
         gitHubViewModel.getKotlinRepositories().observe(viewLifecycleOwner, Observer {
            if (it.items != null) {
                projectsAdapter = ProjectsAdapter(it.items!!, R.layout.repo_item, this)
+               mLayoutManager = LinearLayoutManager(activity , LinearLayoutManager.VERTICAL, false)
 
                rvProjects.apply {
                    adapter = projectsAdapter
                    addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
-                   layoutManager = LinearLayoutManager(activity , LinearLayoutManager.VERTICAL, false)
+                   layoutManager = mLayoutManager
                }
            }
         })
@@ -52,6 +56,22 @@ class GithubFragment : Fragment(), ProjectsAdapter.OnItemClickListener {
         val i: Intent = Intent(Intent.ACTION_VIEW)
         i.data = Uri.parse(repository?.htmlUrl);
         startActivity(i);
+    }
+
+    override fun onPause() {
+        super.onPause()
+        //read current recyclerview position
+        index = mLayoutManager!!.findFirstVisibleItemPosition()
+        val v: View = rvProjects.getChildAt(0)
+        top = if (v == null) 0 else v.top - rvProjects.paddingTop
+    }
+
+    override fun onResume() {
+        super.onResume()
+        //set recyclerview position
+        if (index != -1) {
+            mLayoutManager!!.scrollToPositionWithOffset(index, top)
+        }
     }
 
 }
