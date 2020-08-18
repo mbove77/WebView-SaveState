@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BairesDev Challenge</string>
+    <string name="menu_google">Google</string>
+    <string name="menu_buttons">Buttons</string>
+    <string name="menu_github">GitHub</string>
+    <string name="toast_msg">This is a  toast message!</string>
+    <string name="alert_tittle">Alert Tittle</string>
+    <string name="alert_msg">This is a custom alert dialog.</string>
+    <string name="alert_ok">OK</string>
+    <string name="google_subtitle">Google Fragment</string>
+    <string name="button_subtitle">Buttons Fragment</string>
+    <string name="github_subtitle">Android projects using kotlin</string>
+</resources>
