@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BairesDev Challenge</string>
+    <string name="app_name">WebView Save State + Retrofit</string>
     <string name="menu_google">Google</string>
     <string name="menu_buttons">Buttons</string>
     <string name="menu_github">GitHub</string>

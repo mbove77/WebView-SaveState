@@ -35,11 +35,13 @@ class GithubFragment : Fragment(), ProjectsAdapter.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        progressBar.visibility = View.VISIBLE
         (activity as AppCompatActivity).supportActionBar?.subtitle = getString(R.string.github_subtitle)
+
 
         gitHubViewModel.getKotlinRepositories().observe(viewLifecycleOwner, Observer {
            if (it.items != null) {
+               progressBar.visibility = View.GONE
                projectsAdapter = ProjectsAdapter(it.items!!, R.layout.repo_item, this)
                mLayoutManager = LinearLayoutManager(activity , LinearLayoutManager.VERTICAL, false)
 

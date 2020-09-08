@@ -10,10 +10,6 @@ import java.security.NoSuchAlgorithmException
 import java.util.*
 import javax.net.ssl.*
 
-/**
- * Created by Martín Bove on 18-Aug-20.
- * E-mail: mbove77@gmail.com
- */
 class TLSSocketFactory : SSLSocketFactory() {
     private val delegate: SSLSocketFactory
     private lateinit var trustManagers: Array<TrustManager>
